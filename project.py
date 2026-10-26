@@ -1,5 +1,6 @@
 import sys
 from document_assistant.document_loader import load_text_file
+from document_assistant.text_processor import clean_text
 
 
 def count_characters(text):
@@ -26,6 +27,7 @@ def main():
     try:
         document = load_text_file(filename)
 
+
     except FileNotFoundError as e:
         print(f"Error: {e}")
         sys.exit(1)
@@ -40,6 +42,7 @@ def main():
 
     text = document["text"]
     name = document["name"]
+    clean_text(text)
     words = count_words(text)
     characters = count_characters(text)
 
